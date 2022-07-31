@@ -9,9 +9,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 3.0f;
     public bool isGrounded;
     Vector3 jump;
-
-    Vector2 rotation = Vector2.zero;
-    public float lookspeed = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Movement();
-        Camera();
     }
 
     private void OnCollisionStay(Collision collision)
@@ -32,12 +27,6 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = true;
     }
 
-    void Camera()
-    {
-        rotation.y += Input.GetAxis("Mouse X");
-        rotation.x += -Input.GetAxis("Mouse Y");
-        transform.eulerAngles = (Vector2)rotation * speed;
-    }
     void Movement()
     {
         if (Input.GetKey(KeyCode.W))
